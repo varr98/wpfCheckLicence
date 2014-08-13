@@ -1,0 +1,11 @@
+﻿<Window x:Class="frmManageCompany"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="frmManageCompany" Height="313.808" Width="533.473" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/verde-riflesso.jpg"/>
+        </Grid.Background>
+
+    </Grid>
+</Window>

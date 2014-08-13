@@ -28,10 +28,7 @@ Public Class frmManageGroupCompany
         Dim cmd As SqlCommand = New SqlCommand()
         cmd.Connection = sqlCon
         cmd.CommandType = CommandType.Text
-        'cmd.CommandText = "SELECT distinct tblGroupCompany.group_company_code, tblGroupCompany.description FROM tblProgramUser INNER JOIN tblCompanyAssignement ON tblProgramUser.company_code = tblCompanyAssignement.idCompany INNER JOIN tblGroupCompany ON tblCompanyAssignement.idGroupCompany = tblGroupCompany.group_company_code WHERE (tblProgramUser.serial = @ser) ORDER BY tblGroupCompany.description"
-        cmd.CommandText = "SELECT distinct tblGroupCompany.group_company_code, tblGroupCompany.description FROM tblProgramUser INNER JOIN tblCompanyAssignement ON tblProgramUser.company_code = tblCompanyAssignement.idCompany INNER JOIN tblGroupCompany ON tblCompanyAssignement.idGroupCompany = tblGroupCompany.group_company_code WHERE (tblProgramUser.serial = @ser) ORDER BY tblGroupCompany.description"
-        cmd.Parameters.Add("@ser", SqlDbType.NChar)
-        cmd.Parameters("@ser").Value = product_serial
+        cmd.CommandText = "SELECT id, group_company_code, description FROM tblGroupCompany ORDER BY description"
 
         Dim sqlDa As SqlDataAdapter = New SqlDataAdapter()
         sqlDa.SelectCommand = cmd

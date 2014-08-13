@@ -1,0 +1,14 @@
+﻿<Window x:Class="frmAdminPwd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="182.667" Width="310.448" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="images/verde-riflesso.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Button x:Name="btnOk" Content="Ok" HorizontalAlignment="Left" Height="23" Margin="174,90,0,0" VerticalAlignment="Top" Width="59"/>
+        <TextBox x:Name="txtPinCode" HorizontalAlignment="Left" Height="23" Margin="75,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99"/>
+        <Label Content="Insert pincode" Height="28" Margin="72,10,71,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="txtCode" Height="22" Margin="95,50,95,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" TextAlignment="Center"/>
+
+    </Grid>
+</Window>

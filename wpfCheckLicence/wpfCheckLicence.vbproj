@@ -47,6 +47,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>key-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -66,6 +69,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="frmAdminPwd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmManageCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmManageGroupCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +88,20 @@
     <Compile Include="Application.xaml.vb">
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DB_99C452_clientsDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_99C452_clientsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminPwd.xaml.vb">
+      <DependentUpon>frmAdminPwd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageCompany.xaml.vb">
+      <DependentUpon>frmManageCompany.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageGroupCompany.xaml.vb">
+      <DependentUpon>frmManageGroupCompany.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.vb">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -99,6 +128,7 @@
     <Import Include="System.Windows.Navigation" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -121,6 +151,17 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="DB_99C452_clientsDataSet.xsc">
+      <DependentUpon>DB_99C452_clientsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DB_99C452_clientsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB_99C452_clientsDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DB_99C452_clientsDataSet.xss">
+      <DependentUpon>DB_99C452_clientsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
@@ -129,6 +170,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\verde-riflesso.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\refresh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\refresh2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\key-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="key-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\gear.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

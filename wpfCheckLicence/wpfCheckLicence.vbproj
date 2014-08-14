@@ -73,7 +73,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="frmManageCompany.xaml">
+    <Page Include="frmAdminModifyCompany.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,8 +97,8 @@
     <Compile Include="frmAdminPwd.xaml.vb">
       <DependentUpon>frmAdminPwd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="frmManageCompany.xaml.vb">
-      <DependentUpon>frmManageCompany.xaml</DependentUpon>
+    <Compile Include="frmAdminModifyCompany.xaml.vb">
+      <DependentUpon>frmAdminModifyCompany.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmManageGroupCompany.xaml.vb">
       <DependentUpon>frmManageGroupCompany.xaml</DependentUpon>

@@ -1,6 +1,11 @@
 ﻿Public Class frmAdminPwd
     Dim tmp As Integer
 
+    Private Sub frmAdminPwd_Initialized(sender As Object, e As EventArgs) Handles Me.Initialized
+        txtPinCode.Focus()
+
+    End Sub
+
 
     Private Sub frmAdminPwd_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Dim rand As New Random()

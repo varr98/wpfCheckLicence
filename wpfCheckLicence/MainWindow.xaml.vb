@@ -35,7 +35,7 @@ Class MainWindow
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As RoutedEventArgs) Handles btnRefresh.Click
-        ListCompany(cmbGroupCompany.SelectedValue)
+        ListGroupCompany(My.Settings.Item("product_serial"))
 
     End Sub
 
@@ -56,14 +56,8 @@ Class MainWindow
         Dim frm As New frmManageGroupCompany
         frm.ShowDialog()
 
+        ListGroupCompany(My.Settings.Item("product_serial"))
     End Sub
-
-    Private Sub btnManageCompany_Click(sender As Object, e As RoutedEventArgs) Handles btnManageCompany.Click
-        Dim frm As New frmManageCompany
-        frm.ShowDialog()
-
-    End Sub
-
 
     Private Sub cmbCompany_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cmbCompany.SelectionChanged
         ListPurchased(cmbCompany.SelectedValue)

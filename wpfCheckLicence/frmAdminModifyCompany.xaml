@@ -1,0 +1,25 @@
+﻿<Window x:Class="frmAdmModifyCompany"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Modify Company" Height="276.866" Width="413.433" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="images/verde-riflesso.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Label Content="ID" HorizontalAlignment="Left" Height="30" Margin="20,19,0,0" VerticalAlignment="Top" Width="48"/>
+        <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="22" Margin="113,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True"/>
+        <Button x:Name="btnSave" Content="Save" Height="22" Margin="303,23,52,0" VerticalAlignment="Top" Background="{x:Null}"/>
+        <Label Content="Description" HorizontalAlignment="Left" Height="26" Margin="20,54,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Height="26" Margin="113,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157"/>
+        <Label Content="Country Code" HorizontalAlignment="Left" Height="26" Margin="20,92,0,0" VerticalAlignment="Top" Width="84"/>
+        <TextBox x:Name="txtCountryCode" HorizontalAlignment="Left" Height="26" Margin="113,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157"/>
+        <Label Content="Default" HorizontalAlignment="Left" Height="26" Margin="20,135,0,0" VerticalAlignment="Top" Width="84"/>
+        <ComboBox x:Name="cmbDefault" HorizontalAlignment="Left" Height="26" Margin="113,135,0,0" VerticalAlignment="Top" Width="76">
+            <ComboBoxItem Content="Yes"/>
+            <ComboBoxItem Content="No"/>
+        </ComboBox>
+        <Label Content="Pin Code" HorizontalAlignment="Left" Margin="20,172,0,0" VerticalAlignment="Top" Height="26" Width="73"/>
+        <TextBox x:Name="txtPinCode" HorizontalAlignment="Left" Height="26" Margin="113,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" HorizontalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
+
+    </Grid>
+</Window>

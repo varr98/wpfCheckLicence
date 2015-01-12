@@ -6,11 +6,25 @@ Class MainWindow
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         btnManageGroupCompany.Visibility = btn_admin_hidden
 
-        If My.Settings.Item("product_serial") = "" Then
+
+
+        My.Settings.Reset()
+
+        If My.Settings.activated = False Then
+            Dim frm As New frmActivation
+            frm.ShowDialog()
+
+        End If
+
+        If My.Settings.activated = True Then
+
+        End If
+
+        If My.Settings.application_id = "" Then
             Dim ser As String = InputBox("Insert User Code", "UserCode request", "")
             If ser <> "" Then
                 If ListGroupCompany(ser) > 0 Then
-                    My.Settings.Item("product_serial") = ser
+                    ' My.Settings.application_id = ser
                     My.Settings.Save()
 
                     ListGroupCompany(ser)
@@ -76,16 +90,9 @@ Class MainWindow
 
         End Try
 
-        Dim selectedDG As Integer = Nothing
-        Try
-            selectedDG = dgPurchased.SelectedItem.Item(4).ToString
 
-        Catch ex As Exception
-
-        End Try
-
-        If IsNothing(selectedTVI) = False And IsNothing(selectedDG) = False Then
-            ListInUse(selectedDG, selectedTVI.Name)
+        If IsNothing(selectedTVI) = False And IsNothing(cmbCompany.SelectedValue) = False Then
+            ListInUse(cmbCompany.SelectedValue, selectedTVI.Name)
 
         End If
 
@@ -100,16 +107,8 @@ Class MainWindow
 
         End Try
 
-        Dim selectedDG As Integer = Nothing
-        Try
-            selectedDG = dgPurchased.SelectedItem.Item(4).ToString
-
-        Catch ex As Exception
-
-        End Try
-
-        If IsNothing(selectedTVI) = False And IsNothing(selectedDG) = False Then
-            ListInUse(selectedDG, selectedTVI.Name)
+        If IsNothing(selectedTVI) = False And IsNothing(cmbCompany.SelectedValue) = False Then
+            ListInUse(cmbCompany.SelectedValue, selectedTVI.Name)
 
         End If
 
@@ -130,7 +129,8 @@ Class MainWindow
         Dim cmd As SqlCommand = New SqlCommand()
         cmd.Connection = sqlCon
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "SELECT distinct tblGroupCompany.group_company_code, tblGroupCompany.description FROM tblProgramUser INNER JOIN tblCompanyAssignement ON tblProgramUser.company_code = tblCompanyAssignement.idCompany INNER JOIN tblGroupCompany ON tblCompanyAssignement.idGroupCompany = tblGroupCompany.group_company_code WHERE (tblProgramUser.serial = @ser) ORDER BY tblGroupCompany.description"
+        cmd.CommandText = "SELECT distinct tblGroupCompany.group_company_code, tblGroupCompany.description FROM tblSerialAuth INNER JOIN tblCompanyAssignement ON tblSerialAuth.company_code = tblCompanyAssignement.idCompany INNER JOIN tblGroupCompany ON tblCompanyAssignement.idGroupCompany = tblGroupCompany.group_company_code WHERE (tblSerialAuth.serial = @ser) ORDER BY tblGroupCompany.description"
+        'cmd.CommandText = "SELECT distinct tblGroupCompany.group_company_code, tblGroupCompany.description FROM tblProgramUser INNER JOIN tblCompanyAssignement ON tblProgramUser.company_code = tblCompanyAssignement.idCompany INNER JOIN tblGroupCompany ON tblCompanyAssignement.idGroupCompany = tblGroupCompany.group_company_code WHERE (tblProgramUser.serial = @ser) ORDER BY tblGroupCompany.description"
         cmd.Parameters.Add("@ser", SqlDbType.NChar)
         cmd.Parameters("@ser").Value = product_serial
 
@@ -183,7 +183,7 @@ Class MainWindow
         Dim cmd As SqlCommand = New SqlCommand()
         cmd.Connection = sqlCon
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "SELECT tblCompany.company_code, tblCompany.description, tblCompany.country_code FROM tblCompany INNER JOIN tblCompanyAssignement ON tblCompany.company_code = tblCompanyAssignement.idCompany INNER JOIN tblGroupCompany ON tblCompanyAssignement.idGroupCompany = tblGroupCompany.group_company_code INNER JOIN tblProgramUser ON tblCompanyAssignement.idCompany = tblProgramUser.company_code WHERE (tblGroupCompany.group_company_code = @gcompany) AND (tblProgramUser.serial = @ser) ORDER BY tblCompany.company_default desc, tblCompany.description"
+        cmd.CommandText = "SELECT tblCompany.company_code, tblCompany.description, tblCompany.country_code FROM tblCompany INNER JOIN tblCompanyAssignement ON tblCompany.company_code = tblCompanyAssignement.idCompany INNER JOIN tblGroupCompany ON tblCompanyAssignement.idGroupCompany = tblGroupCompany.group_company_code INNER JOIN tblSerialAuth ON tblCompanyAssignement.idCompany = tblSerialAuth.company_code WHERE (tblGroupCompany.group_company_code = @gcompany) AND (tblSerialAuth.serial = @ser) ORDER BY tblCompany.company_default desc, tblCompany.description"
 
         cmd.Parameters.Add("@gcompany", SqlDbType.Int)
         cmd.Parameters.Add("@ser", SqlDbType.NChar)
@@ -236,7 +236,7 @@ Class MainWindow
         Dim cmd As SqlCommand = New SqlCommand()
         cmd.Connection = sqlCon
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "SELECT [prog_cod], [prog_description], [seats_purchased], [seats_in_use], [company_code], [register_mail], [prog_serial], [customer_pwd], pin_code FROM tblSeatsPurchased WHERE company_code = @company"
+        cmd.CommandText = "SELECT [prog_cod], [prog_description], [seats_purchased], [seats_in_use], [register_mail], [prog_serial], pin_code FROM tblSeatsPurchased WHERE company_code = @company"
 
         cmd.Parameters.Add("@company", SqlDbType.Int)
         cmd.Parameters("@company").Value = company
@@ -280,10 +280,10 @@ Class MainWindow
         cmd.Connection = sqlCon
         cmd.CommandType = CommandType.Text
         If agency = "ALL" Then
-            cmd.CommandText = "SELECT [agency_code],[seat_id], [seat_hw],[user_name],[user_mail],[user_pwd],[pin_code],[first_name],[last_name],[active] FROM [DB_99C452_clients].[dbo].[tblSeatsInUse] WHERE company_code = @company"
+            cmd.CommandText = "SELECT [agency_code],[seat_id],[seat_hw],[pin_code],[user_name],[user_pwd],[user_mail],[first_name],[last_name],[active] FROM [DB_99C452_clients].[dbo].[tblSeatsInUse] WHERE company_code = @company"
 
         Else
-            cmd.CommandText = "SELECT [agency_code],[seat_id], [seat_hw],[user_name],[user_mail],[user_pwd],[pin_code],[first_name],[last_name],[active] FROM [DB_99C452_clients].[dbo].[tblSeatsInUse] WHERE company_code = @company and agency_code = @agency"
+            cmd.CommandText = "SELECT [agency_code],[seat_id],[seat_hw],[pin_code],[user_name],[user_pwd],[user_mail],[first_name],[last_name],[active] FROM [DB_99C452_clients].[dbo].[tblSeatsInUse] WHERE company_code = @company and agency_code = @agency"
             cmd.Parameters.Add("@agency", SqlDbType.Int)
             cmd.Parameters("@agency").Value = agency.Replace("age", "")
 
@@ -388,6 +388,32 @@ Class MainWindow
 
     End Sub
 
+
+    Private Sub btnManageAgency_Click(sender As Object, e As RoutedEventArgs) Handles btnManageAgency.Click
+        tmpData = cmbCompany.SelectedValue
+
+        Dim frm As New frmManageAgency
+        frm.ShowDialog()
+
+    End Sub
   
+
+    Private Sub btnAddNewPenpc_Click(sender As Object, e As RoutedEventArgs) Handles btnAddNewPenpc.Click
+        Dim selectedTVI As TreeViewItem = Nothing
+        Try
+            selectedTVI = CType(twAgency.SelectedItem, TreeViewItem)
+
+            tmpData = selectedTVI.Name
+
+        Catch ex As Exception
+
+        End Try
+
+
+        Dim frm As New frmNewPenpc
+        frm.ShowDialog()
+
+
+    End Sub
 
 End Class

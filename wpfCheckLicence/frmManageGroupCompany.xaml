@@ -1,7 +1,7 @@
 ﻿<Window x:Class="frmManageGroupCompany"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Company Management" Height="453.731" Width="638.701" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    Title="Company Management" Height="343.731" Width="672.701" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="images/verde-riflesso.jpg"/>
     </Window.Background>
@@ -19,6 +19,9 @@
         <Button x:Name="btnAddNewCompany" Content="Add New" Height="31" Margin="297,121,0,0" VerticalAlignment="Top" Template="{DynamicResource ButtonControlTemplate1}" HorizontalAlignment="Left" Width="60"/>
         <Button x:Name="btnModifyCompany" Content="Modify" Height="31" Margin="375,121,0,0" VerticalAlignment="Top" Template="{DynamicResource ButtonControlTemplate1}" HorizontalAlignment="Left" Width="60"/>
         <Button x:Name="btnDeleteCompany" Content="Delete" Height="31" Margin="456,121,0,0" VerticalAlignment="Top" Template="{DynamicResource ButtonControlTemplate1}" HorizontalAlignment="Left" Width="60" IsEnabled="False"/>
+        <DataGrid x:Name="dgPurchased" HorizontalAlignment="Left" Height="90" Margin="21,192,0,0" VerticalAlignment="Top" Width="495"/>
+        <Button x:Name="btnModifyPurchased" Content="Modify Purchased" Height="31" Margin="531,251,0,0" VerticalAlignment="Top" Template="{DynamicResource ButtonControlTemplate1}" HorizontalAlignment="Left" Width="114"/>
+        <Button x:Name="btnAddPurchased" Content="Add Purchased" Height="31" Margin="531,210,0,0" VerticalAlignment="Top" Template="{DynamicResource ButtonControlTemplate1}" HorizontalAlignment="Left" Width="114"/>
 
     </Grid>
 </Window>

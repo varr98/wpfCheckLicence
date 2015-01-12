@@ -51,7 +51,12 @@
     <ApplicationIcon>key-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\Connector.NET 6.9\Assemblies\v4.0\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System" />
@@ -69,6 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="frmActivation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="frmAdminPwd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,7 +86,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="frmManageAgency.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="frmManageGroupCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmNewPenpc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,10 +106,14 @@
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="clsMysqldb.vb" />
     <Compile Include="DB_99C452_clientsDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_99C452_clientsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmActivation.xaml.vb">
+      <DependentUpon>frmActivation.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmAdminPwd.xaml.vb">
       <DependentUpon>frmAdminPwd.xaml</DependentUpon>
@@ -100,8 +121,14 @@
     <Compile Include="frmAdminModifyCompany.xaml.vb">
       <DependentUpon>frmAdminModifyCompany.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frmManageAgency.xaml.vb">
+      <DependentUpon>frmManageAgency.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmManageGroupCompany.xaml.vb">
       <DependentUpon>frmManageGroupCompany.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewPenpc.xaml.vb">
+      <DependentUpon>frmNewPenpc.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.vb">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -129,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Module1.vb" />
+    <Compile Include="ModuleActivation.vb" />
     <Compile Include="My Project\AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -188,6 +216,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\gear.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rosso-riflesso.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

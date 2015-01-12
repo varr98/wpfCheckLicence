@@ -1,0 +1,75 @@
+﻿<Window x:Class="frmActivation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Activation" Height="533.656" Width="588" Icon="key-icon.ico" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="images/rosso-riflesso.jpg"/>
+    </Window.Background>
+    <Grid Margin="0,0,0,1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblResult" Content="--" HorizontalAlignment="Center" Margin="136,0,136,44" Width="310" FontSize="33" FontFamily="Showcard Gothic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="64" VerticalAlignment="Bottom">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.33">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label x:Name="lblInternet" Content="INTERNET CONNECTION" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Center" Background="#FFFF0C0C" BorderBrush="Black" BorderThickness="0,2,0,0" Margin="199,0" Width="184" HorizontalContentAlignment="Center"/>
+        <TabControl Margin="58,24,58,141" Background="{x:Null}">
+            <TabItem Header="Offline Activation" Height="23" VerticalAlignment="Top">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="Red" Offset="1"/>
+                            <GradientStop Color="#FFFF1A1A" Offset="0.12"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="txtActivation" HorizontalAlignment="Left" Margin="33,169,0,0" TextWrapping="Wrap" Width="390" Height="33" VerticalAlignment="Top" FontSize="16" HorizontalContentAlignment="Center"/>
+                    <Button Content="Activate" Margin="171,0,172,10" Click="Button_Click" FontSize="16" Height="33" VerticalAlignment="Bottom">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnKeyGen2" Content="." HorizontalAlignment="Left" Margin="289,0,0,10" Width="16" Height="33" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="txtMachineID" HorizontalAlignment="Left" Height="33" Margin="33,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" IsReadOnly="True" HorizontalContentAlignment="Center" FontSize="16" Background="#FFFFC5C5"/>
+                    <Label Content="Machine id" HorizontalAlignment="Left" Height="25" Margin="33,83,0,0" VerticalAlignment="Top" Width="78" FontSize="14"/>
+                    <Label Content="Activation code" HorizontalAlignment="Left" Height="28" Margin="33,144,0,0" VerticalAlignment="Top" Width="113" FontSize="14"/>
+                    <TextBlock HorizontalAlignment="Center" Height="32" Margin="0,225,0,0" TextWrapping="Wrap" Text="Ask to vendor the Activation Code." VerticalAlignment="Top" Width="263" FontWeight="SemiBold" FontSize="16"/>
+                    <TextBox x:Name="txtApplicationID" HorizontalAlignment="Left" Height="33" Margin="33,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" IsReadOnly="True" HorizontalContentAlignment="Center" FontSize="16" Background="#FFFFC5C5"/>
+                    <Label Content="Apllication id" HorizontalAlignment="Left" Height="38" Margin="33,21,0,0" VerticalAlignment="Top" Width="96" FontSize="14"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Details" HorizontalAlignment="Left" Width="55" Margin="-2,-2,0,2">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="Red" Offset="1"/>
+                            <GradientStop Color="#FFFF1A1A" Offset="0.12"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="txtSerialHD" HorizontalAlignment="Left" Height="33" Margin="33,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" IsReadOnly="True" HorizontalContentAlignment="Center" FontSize="16" Background="#FFFFC5C5"/>
+                    <Label Content="HD Serial" HorizontalAlignment="Left" Height="25" Margin="33,83,0,0" VerticalAlignment="Top" Width="78" FontSize="14"/>
+                    <TextBox x:Name="txtSerialCPU" HorizontalAlignment="Left" Height="33" Margin="33,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" IsReadOnly="True" HorizontalContentAlignment="Center" FontSize="16" Background="#FFFFC5C5"/>
+                    <Label Content="CPU Serial" HorizontalAlignment="Left" Height="38" Margin="33,21,0,0" VerticalAlignment="Top" Width="96" FontSize="14"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

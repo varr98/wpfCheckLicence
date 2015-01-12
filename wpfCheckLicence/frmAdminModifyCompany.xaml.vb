@@ -5,11 +5,19 @@ Public Class frmAdmModifyCompany
 
 
     Private Sub frmAdmModifyCompany_Initialized(sender As Object, e As EventArgs) Handles Me.Initialized
+        If tmpData.Length >= 3 Then
+            If tmpData.ToLower.Substring(0, 3) = "new" Then
+                btnSave.Content = "Add"
+                txtID.Text = maxID("tblCompany") + 1
 
-        If tmpData.ToLower.Substring(0, 3) = "new" Then
-            btnSave.Content = "Add"
-            txtID.Text = maxID("tblCompany") + 1
+            Else
+                btnSave.Content = "Save"
 
+                If IsNumeric(tmpData) Then
+                    loadData(tmpData)
+
+                End If
+            End If
         Else
             btnSave.Content = "Save"
 

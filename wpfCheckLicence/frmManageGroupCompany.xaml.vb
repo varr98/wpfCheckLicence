@@ -22,6 +22,12 @@ Public Class frmManageGroupCompany
         End If
     End Sub
 
+    Private Sub cmbCompany_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cmbCompany.SelectionChanged
+        ListPurchased(cmbCompany.SelectedValue)
+
+    End Sub
+
+
     'btn Group Company
 
     Private Sub btnAddNewGroupCompany_Click(sender As Object, e As RoutedEventArgs) Handles btnAddNewGroupCompany.Click
@@ -90,6 +96,31 @@ Public Class frmManageGroupCompany
         If ris = MsgBoxResult.Yes Then
 
 
+
+        End If
+
+    End Sub
+
+    'btn Purchased
+
+    Private Sub btnModifyPurchased_Click(sender As Object, e As RoutedEventArgs) Handles btnModifyPurchased.Click
+        Dim selectedDG As String = ""
+        Try
+            selectedDG = dgPurchased.SelectedItem.Item(6).ToString
+
+        Catch ex As Exception
+
+        End Try
+
+        If selectedDG <> "" Then
+            Dim ris As String = InputBox("New PURCHASED LICENCE for " & selectedDG, dgPurchased.SelectedItem.Item(1).ToString, dgPurchased.SelectedItem.Item(2).ToString)
+
+            If ris <> "" Then
+                modifyPurchased(dgPurchased.SelectedItem.Item(0).ToString, selectedDG, ris)
+
+                ListPurchased(cmbCompany.SelectedValue)
+
+            End If
 
         End If
 
@@ -338,6 +369,94 @@ Public Class frmManageGroupCompany
         Mouse.OverrideCursor = Cursors.Arrow
     End Sub
 
+    Private Sub ListPurchased(company As Integer)
+        Mouse.OverrideCursor = Cursors.Wait
 
+        Dim sqlCon As SqlConnection = New SqlConnection()
+        sqlCon.ConnectionString = connectionString
+
+        Dim cmd As SqlCommand = New SqlCommand()
+        cmd.Connection = sqlCon
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "SELECT [prog_cod], [prog_description], [seats_purchased], [seats_in_use], [company_code], [register_mail], [prog_serial], pin_code FROM tblSeatsPurchased WHERE company_code = @company"
+
+        cmd.Parameters.Add("@company", SqlDbType.Int)
+        cmd.Parameters("@company").Value = company
+
+        Dim sqlDa As SqlDataAdapter = New SqlDataAdapter()
+        sqlDa.SelectCommand = cmd
+
+        Dim ds As DataSet = New DataSet()
+
+        Try
+            sqlDa.Fill(ds, "tblSeatsPurchased")
+
+            'Binding the data to the combobox.
+            dgPurchased.ItemsSource = ds.Tables("tblSeatsPurchased").DefaultView
+            dgPurchased.DataContext = ds.Tables("tblSeatsPurchased")
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message.ToString)
+
+        Finally
+            sqlDa.Dispose()
+            cmd.Dispose()
+            sqlCon.Dispose()
+
+        End Try
+
+        If dgPurchased.Items.Count > 0 Then
+            dgPurchased.SelectedIndex = 0
+
+        End If
+        Mouse.OverrideCursor = Cursors.Arrow
+    End Sub
+
+    Private Function modifyPurchased(idProgram As String, serial As String, newValue As Integer) As Boolean
+        Mouse.OverrideCursor = Cursors.Wait
+
+        modifyPurchased = False
+
+        Dim sqlCon As SqlConnection = New SqlConnection()
+        sqlCon.ConnectionString = connectionString
+
+
+        Dim cmd As SqlCommand = New SqlCommand()
+        cmd.Connection = sqlCon
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "UPDATE tblSeatsPurchased SET seats_purchased = @newValue WHERE prog_cod = @idProgram and prog_serial = @serial"
+
+        cmd.Parameters.Add("@idProgram", SqlDbType.NVarChar)
+        cmd.Parameters.Add("@serial", SqlDbType.NVarChar)
+        cmd.Parameters.Add("@newValue", SqlDbType.Int)
+
+        cmd.Parameters("@idProgram").Value = idProgram
+        cmd.Parameters("@serial").Value = serial
+        cmd.Parameters("@newValue").Value = newValue
+
+
+        Try
+            If cmd.Connection.State <> ConnectionState.Open Then
+                cmd.Connection.Open()
+
+            End If
+
+            cmd.ExecuteNonQuery()
+
+            modifyPurchased = True
+
+        Catch ex As Exception
+            modifyPurchased = False
+
+            MessageBox.Show(ex.Message.ToString)
+
+        Finally
+            cmd.Dispose()
+            sqlCon.Dispose()
+
+        End Try
+
+
+    End Function
 
 End Class

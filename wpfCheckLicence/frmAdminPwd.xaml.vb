@@ -26,7 +26,7 @@
             If CInt(txtPinCode.Text) = (tmp + 1000) / 2 + Now.Day Or txtPinCode.Text = "00" Then
                 btn_admin_hidden = False
 
-                If InputBox("Reset GROUCOMPANY ?", "Admin reset", "N") = "Y" Then
+                If InputBox("Reset GROUPCOMPANY ?", "Admin reset", "N") = "Y" Then
                     My.Settings.Item("product_serial") = ""
                     My.Settings.Save()
 

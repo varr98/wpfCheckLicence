@@ -19,7 +19,7 @@
             <ComboBoxItem Content="No"/>
         </ComboBox>
         <Label Content="Pin Code" HorizontalAlignment="Left" Margin="20,172,0,0" VerticalAlignment="Top" Height="26" Width="73"/>
-        <TextBox x:Name="txtPinCode" HorizontalAlignment="Left" Height="26" Margin="113,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" HorizontalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="txtPinCode" HorizontalAlignment="Left" Height="26" Margin="113,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" HorizontalContentAlignment="Center"/>
 
     </Grid>
 </Window>

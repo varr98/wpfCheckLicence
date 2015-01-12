@@ -1,0 +1,20 @@
+﻿<Window x:Class="frmNewPenpc"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="frmNewPenpc" Height="300" Width="447">
+    <Window.Background>
+        <ImageBrush ImageSource="images/verde-riflesso.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Label Content="Agency" HorizontalAlignment="Left" Height="30" Margin="88,19,0,0" VerticalAlignment="Top" Width="55"/>
+        <TextBox x:Name="txtIDAgency" HorizontalAlignment="Left" Height="22" Margin="156,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True"/>
+        <Label Content="Penpc Nr" HorizontalAlignment="Left" Height="28" Margin="78,60,0,0" VerticalAlignment="Top" Width="65"/>
+        <TextBox x:Name="txtIDPenpc" HorizontalAlignment="Left" Height="22" Margin="156,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True"/>
+        <Label Content="Penpc HW" HorizontalAlignment="Left" Height="28" Margin="78,103,0,0" VerticalAlignment="Top" Width="65"/>
+        <TextBox x:Name="txtPenpcHW" HorizontalAlignment="Left" Height="28" Margin="156,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"/>
+        <Label Content="Activation Pin Code" HorizontalAlignment="Left" Height="29" Margin="20,143,0,0" VerticalAlignment="Top" Width="123"/>
+        <TextBox x:Name="txtPincode" HorizontalAlignment="Left" Height="22" Margin="156,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="btnSave" Content="Add" Height="22" Margin="355,23,32,0" VerticalAlignment="Top" Background="{x:Null}"/>
+
+    </Grid>
+</Window>
